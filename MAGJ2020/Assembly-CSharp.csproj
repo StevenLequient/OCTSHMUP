@@ -82,6 +82,7 @@
     <Compile Include="Assets\CodeMonkey\Utils\World_Mesh.cs" />
     <Compile Include="Assets\CodeMonkey\Utils\World_Sprite.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Constants.cs" />
     <Compile Include="Assets\Scripts\GameHandler.cs" />
     <Compile Include="Assets\Scripts\Serializables\Sound.cs" />
     <None Include="Assets\CodeMonkey\README.txt" />
