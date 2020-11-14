@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,17 +12,51 @@ public class TetrisController : MonoBehaviour
 
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
+
+    private List<int> randomPieceBag = new List<int>();
     
     public int boardWidth = 10;
     public int boardHeight = 20;
 
     public Transform[,] grid;
 
+    public bool dead = false;
+    public int clearedLines = 0;
 
     void SpawnPiece()
     {
-        movingTetromino = Instantiate(piecesToSpawn[Random.Range(0, piecesToSpawn.Length)], transform.position + spawnPoint, Quaternion.identity).GetComponent<Tetromino>();
+        if (randomPieceBag.Count == 0)
+        {
+            InitRandomBag();
+        }
+
+        int index = Random.Range(0, randomPieceBag.Count);
+        int selectedPiece = randomPieceBag[index];
+        randomPieceBag.RemoveAt(index);
+        
+        if (randomPieceBag.Count == 0)
+        {
+            InitRandomBag();
+        }
+        
+        movingTetromino = Instantiate(piecesToSpawn[selectedPiece], transform.position + spawnPoint, Quaternion.identity).GetComponent<Tetromino>();
+        if (!movingTetromino.ValidPosition())
+        {
+            dead = true;
+            movingTetromino = null;
+            Debug.Log("You lose!");
+        }
     }
+
+    private void InitRandomBag()
+    {
+        randomPieceBag.Clear();
+        for (int i = 0; i < piecesToSpawn.Length; i++)
+        {
+            randomPieceBag.Add(i);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,7 +137,7 @@ public class TetrisController : MonoBehaviour
             if (movingTetromino.frozen)
             {
                 AddToGrid();
-                ClearLines();
+                clearedLines += ClearLines();
                 SpawnPiece();
             }
         }
