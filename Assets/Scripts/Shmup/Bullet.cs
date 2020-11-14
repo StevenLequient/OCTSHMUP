@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.y > 15)
+        if (transform.localPosition.y > 9.8f)
         {
             Destroy(gameObject);
         }
@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        Debug.Log("Enter");
         if (hitInfo.GetComponent<Player>() != null)
         {
             return;
@@ -24,6 +25,7 @@ public class Bullet : MonoBehaviour
         Enemy enemyComponent = hitInfo.GetComponent<Enemy>();
         if (enemyComponent != null)
         {
+            Debug.Log("enemy");
             enemyComponent.Hit();
         }
 

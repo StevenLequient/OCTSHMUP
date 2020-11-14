@@ -15,7 +15,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.localPosition.y < -1f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Hit()
@@ -23,8 +26,8 @@ public class Enemy : MonoBehaviour
         if (action != null)
         {
             action.Trigger();
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D hitInfo)
     {

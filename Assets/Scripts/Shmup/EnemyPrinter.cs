@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyPrinter : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float spawnInterval = 3f;
+    public float spawnInterval = 1f;
     public float shootingForce = 4f;
 
     public Rigidbody2D rb;
@@ -44,7 +44,7 @@ public class EnemyPrinter : MonoBehaviour
         {
             goingLeft = true;
         }
-
+        Debug.Log(Time.fixedTime - lastSpawnTime + ">" + spawnInterval);
         if (Time.fixedTime - lastSpawnTime > spawnInterval)
         {
             GameObject enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
