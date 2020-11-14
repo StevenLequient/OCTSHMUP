@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveAction : MonoBehaviour
+
+public class MoveAction : TetrisAction
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum MoveDirection
     {
-        
+        Up,
+        Down,
+        Left,
+        Right
     }
 
-    // Update is called once per frame
-    void Update()
+    public MoveDirection Direction;
+    public int MoveAmount;
+
+    public new void Trigger()
     {
-        
+        switch (Direction)
+        {
+            case MoveDirection.Up:
+                break;
+            case MoveDirection.Down:
+                break;
+            case MoveDirection.Left:
+                break;
+            case MoveDirection.Right:
+                break;
+            default:
+                break;
+        }
     }
 }
