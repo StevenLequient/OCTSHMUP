@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
     public Camera cam;
+    public GameObject shmup;
 
     private Vector2 movement;
     //private Vector2 mousePos;
@@ -28,5 +29,10 @@ public class PlayerMovement : MonoBehaviour
         //Vector2 lookDir = mousePos - rb.position;
         //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         //rb.rotation = angle;
+    }
+
+    public void Hit()
+    {
+
     }
 }
