@@ -12,7 +12,6 @@ public class TetrisController : MonoBehaviour
 
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
-
     private List<int> randomPieceBag = new List<int>();
     
     public int boardWidth = 10;
@@ -23,6 +22,19 @@ public class TetrisController : MonoBehaviour
     public bool dead = false;
     public int clearedLines = 0;
 
+    public GameObject lineClearEffectPrefab;
+    public float lineClearEffectDuration = 0.5f;
+    private List<int> linesToClear = new List<int>();
+    private List<GameObject> lineClearEffects = new List<GameObject>();
+    private float lineTime;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        grid = new Transform[boardWidth,boardHeight + 10];
+        SpawnPiece();
+    }
+    
     void SpawnPiece()
     {
         if (randomPieceBag.Count == 0)
@@ -56,14 +68,7 @@ public class TetrisController : MonoBehaviour
             randomPieceBag.Add(i);
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        grid = new Transform[boardWidth,boardHeight + 10];
-        SpawnPiece();
-    }
-
+    
     public void MoveLeft()
     {
         movingTetromino.MoveLeft();
@@ -137,7 +142,33 @@ public class TetrisController : MonoBehaviour
             if (movingTetromino.frozen)
             {
                 AddToGrid();
-                clearedLines += ClearLines();
+                movingTetromino = null;
+                int linesCleared = ClearLines();
+                if (linesCleared == 0)
+                {
+                    SpawnPiece();
+                }
+
+                clearedLines += linesCleared;
+            }
+        }
+
+        if (lineClearEffects.Count > 0)
+        {
+            if (Time.time - lineTime > lineClearEffectDuration)
+            {
+                foreach (GameObject effect in lineClearEffects)
+                {
+                    Destroy(effect);
+                }
+                lineClearEffects.Clear();
+
+                foreach (int y in linesToClear)
+                {
+                    DeleteLine(y);
+                    MoveDownLinesAbove(y);
+                }
+                linesToClear.Clear();
                 SpawnPiece();
             }
         }
@@ -146,16 +177,21 @@ public class TetrisController : MonoBehaviour
     private int ClearLines()
     {
         int cleared_lines = 0;
+        linesToClear.Clear();
         for (int y = boardHeight - 1; y >= 0; y--)
         {
             if (CheckLine(y))
             {
                 cleared_lines += 1;
-                DeleteLine(y);
-                MoveDownLinesAbove(y);
+                linesToClear.Add(y);
+                lineClearEffects.Add(Instantiate(lineClearEffectPrefab, transform.position + new Vector3(4.5f, y, 0), Quaternion.identity));
             }
         }
 
+        if (cleared_lines > 0)
+        {
+            lineTime = Time.time;
+        }
         return cleared_lines;
     }
 
