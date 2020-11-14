@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
@@ -12,23 +9,17 @@ public class Tetromino : MonoBehaviour
 
     private TetrisController tetrisController;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         tetrisController = FindObjectOfType<TetrisController>();
         tetrisBoard = tetrisController.GetComponent<Transform>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void MoveLeft()
     {
         var move =  new Vector3(-1,0,0);
         transform.position += move;
-        if (!ValidMove())
+        if (!ValidPosition())
         {
             transform.position -= move;
         }
@@ -38,7 +29,7 @@ public class Tetromino : MonoBehaviour
     {
         var move =  new Vector3(1,0,0);
         transform.position += move;
-        if (!ValidMove())
+        if (!ValidPosition())
         {
             transform.position -= move;
         }
@@ -47,7 +38,7 @@ public class Tetromino : MonoBehaviour
     public void RotateCCW()
     {
         transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), 90);
-        if (!ValidMove())
+        if (!ValidPosition())
         {
             transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), -90);
         }
@@ -56,7 +47,7 @@ public class Tetromino : MonoBehaviour
     public void RotateCW()
     {
         transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), -90);
-        if (!ValidMove())
+        if (!ValidPosition())
         {
             transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), 90);
         }
@@ -66,14 +57,14 @@ public class Tetromino : MonoBehaviour
     {
         var move =  new Vector3(0,-1,0);
         transform.position += move;
-        if (!ValidMove())
+        if (!ValidPosition())
         {
             transform.position -= move;
             frozen = true;
         }
     }
 
-    private bool ValidMove()
+    public bool ValidPosition()
     {
         foreach (Transform children in transform)
         {
