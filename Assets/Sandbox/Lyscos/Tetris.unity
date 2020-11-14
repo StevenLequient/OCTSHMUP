@@ -211,11 +211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1680101541299033532, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1841757513054765762, guid: 8a7a46eecb105a649b0631cd49ad0304,
         type: 3}
       propertyPath: m_Name
@@ -275,63 +270,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[0]
-      value: 
-      objectReference: {fileID: 5371537036381182900, guid: fa45ce454811e2c439df5f4004e296bd,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[1]
-      value: 
-      objectReference: {fileID: 3580892466630742853, guid: ee9086f74253c074e90afd0e612d58b2,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[2]
-      value: 
-      objectReference: {fileID: 4412426456122108612, guid: fcbba23a3b7faa1499522d4ce8db8ea9,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[3]
-      value: 
-      objectReference: {fileID: 8318021892708840785, guid: 91cb0983f29ede143ab38ce5fe43f460,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[4]
-      value: 
-      objectReference: {fileID: 7526784259021358994, guid: 3526c401e1a749144ba3af8fcb2020a1,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[5]
-      value: 
-      objectReference: {fileID: 5464402845014840248, guid: 5ddfb9be3fbca8148a51e9e560f69b5c,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: piecesToSpawn.Array.data[6]
-      value: 
-      objectReference: {fileID: 1204965749352307989, guid: 5994bdc0077fa6d4c8810568b820ce12,
-        type: 3}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: spawnPoint.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1841757513054765764, guid: 8a7a46eecb105a649b0631cd49ad0304,
-        type: 3}
-      propertyPath: spawnPoint.y
-      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7a46eecb105a649b0631cd49ad0304, type: 3}
