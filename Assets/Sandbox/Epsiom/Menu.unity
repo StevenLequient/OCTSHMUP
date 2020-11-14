@@ -189,9 +189,9 @@ RectTransform:
   m_Father: {fileID: 590410801}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290.96, y: -147.15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 147.04001, y: 98.850006}
   m_SizeDelta: {x: 294.0835, y: 198.70486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125549079
@@ -357,9 +357,9 @@ RectTransform:
   m_Father: {fileID: 590410801}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 195}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.000015259, y: -51}
   m_SizeDelta: {x: 748.1696, y: 159.40884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382233527
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 590410802}
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 1086266082}
+        m_MethodName: LoadNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1036,6 +1036,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791990284}
   m_CullTransparentMesh: 0
+--- !u!95 &835680219 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3758748336947710017, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3758748337186324378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1086266082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4457367173785539115, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3758748337186324378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce97cf26754d3f74dbeb9ebfe1b3565b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1281039852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,9 +1088,9 @@ RectTransform:
   m_Father: {fileID: 590410801}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 254.93, y: -218.3}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -183.07, y: 27.699997}
   m_SizeDelta: {x: 331.0385, y: 39.07094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281039854
@@ -1231,9 +1249,9 @@ RectTransform:
   m_Father: {fileID: 590410801}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.705, y: -218.3}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -393.29498, y: 27.699997}
   m_SizeDelta: {x: 89.41077, y: 31.05835}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504723740
@@ -1616,3 +1634,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3758748337186324378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3758748336947710029, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955397, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 280.82892
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 272.4632
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -185.03944
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758748338269955450, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457367173785539115, guid: ecbfeb4fcc58c7345bdbed2cd22909e6,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 835680219}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ecbfeb4fcc58c7345bdbed2cd22909e6, type: 3}
