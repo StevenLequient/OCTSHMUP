@@ -14,8 +14,11 @@ public class TetrisController : MonoBehaviour
 
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
+    
+    public int boardWidth = 10;
+    public int boardHeight = 20;
 
-    public Transform[,] grid = new Transform[10,30];
+    public Transform[,] grid;
 
 
     void SpawnPiece()
@@ -25,9 +28,41 @@ public class TetrisController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        grid = new Transform[boardWidth,boardHeight + 10];
         SpawnPiece();
     }
 
+    public void MoveLeft()
+    {
+        movingTetromino.MoveLeft();
+    }
+
+    public void MoveRight()
+    {
+        movingTetromino.MoveRight();
+    }
+
+    public void MoveDown()
+    {
+        movingTetromino.MoveDown();
+        previousFallTime = Time.time;
+    }
+
+    public void SlamDown()
+    {
+        movingTetromino.SlamDown();
+    }
+
+    public void RotateCCW()
+    {
+        movingTetromino.RotateCCW();
+    }
+
+    public void RotateCW()
+    {
+        movingTetromino.RotateCW();
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -37,28 +72,27 @@ public class TetrisController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    movingTetromino.MoveLeft();
+                    MoveLeft();
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    movingTetromino.MoveRight();
+                    MoveRight();
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    movingTetromino.MoveDown();
-                    previousFallTime = Time.time;
+                    MoveDown();
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    movingTetromino.SlamDown();
+                    SlamDown();
                 }
                 else if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    movingTetromino.RotateCCW();
+                    RotateCCW();
                 }
                 else if (Input.GetKeyDown(KeyCode.X))
                 {
-                    movingTetromino.RotateCW();
+                    RotateCW();
                 }
             }
 
@@ -71,9 +105,64 @@ public class TetrisController : MonoBehaviour
             if (movingTetromino.frozen)
             {
                 AddToGrid();
+                ClearLines();
                 SpawnPiece();
             }
         }
+    }
+
+    private int ClearLines()
+    {
+        int cleared_lines = 0;
+        for (int y = boardHeight - 1; y >= 0; y--)
+        {
+            if (CheckLine(y))
+            {
+                cleared_lines += 1;
+                DeleteLine(y);
+                MoveDownLinesAbove(y);
+            }
+        }
+
+        return cleared_lines;
+    }
+
+    private void MoveDownLinesAbove(int deleted_y)
+    {
+        for (int y = deleted_y + 1; y < boardHeight; y++)
+        {
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    grid[x, y - 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y - 1].transform.position -= new Vector3(0,1,0);
+                }
+            }
+        }
+    }
+
+    private void DeleteLine(int y)
+    {
+        for (int x = 0; x < boardWidth; x++)
+        {
+            Destroy(grid[x,y].gameObject);
+            grid[x, y] = null;
+        }
+    }
+
+    private bool CheckLine(int y)
+    {
+        for (int x = 0; x < boardWidth; x++)
+        {
+            if (grid[x, y] == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void AddToGrid()
