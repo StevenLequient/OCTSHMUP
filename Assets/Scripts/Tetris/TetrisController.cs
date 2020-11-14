@@ -4,6 +4,19 @@ using Random = UnityEngine.Random;
 
 public class TetrisController : MonoBehaviour
 {
+    private static TetrisController _instance;
+    public static TetrisController Instance => _instance;
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+    }
+
     public bool directControl;
     private Tetromino movingTetromino;
     

@@ -58,15 +58,12 @@ public class EnemyPrinter : MonoBehaviour
                     MoveAction action = actionObject.AddComponent<MoveAction>();
                     action.MoveAmount = 1;
                     MoveAction.MoveDirection direction;
-                    switch ((int) Random.Range(0, 3.9f))
+                    switch ((int) Random.Range(0, 2.9f))
                     {
                         case 0:
-                            action.Direction = MoveAction.MoveDirection.Up;
-                            break;
-                        case 1:
                             action.Direction = MoveAction.MoveDirection.Down;
                             break;
-                        case 2:
+                        case 1:
                             action.Direction = MoveAction.MoveDirection.Left;
                             break;
                         default:
