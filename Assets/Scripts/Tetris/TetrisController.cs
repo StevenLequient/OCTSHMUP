@@ -26,9 +26,11 @@ public class TetrisController : MonoBehaviour
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
     private List<int> randomPieceBag = new List<int>();
+
+    public GameObject blockPrefab;
     
     public int boardWidth = 10;
-    public int boardHeight = 20;
+    public int boardHeight = 30;
 
     public Transform[,] grid;
 
@@ -44,7 +46,7 @@ public class TetrisController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Transform[boardWidth,boardHeight + 10];
+        grid = new Transform[boardWidth,boardHeight];
         SpawnPiece();
     }
     
@@ -84,35 +86,77 @@ public class TetrisController : MonoBehaviour
     
     public void MoveLeft()
     {
-        movingTetromino.MoveLeft();
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveLeft();
+        }
     }
 
     public void MoveRight()
     {
-        movingTetromino.MoveRight();
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveRight();
+        }
     }
 
     public void MoveDown()
     {
-        movingTetromino.MoveDown();
-        previousFallTime = Time.time;
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveDown();
+            previousFallTime = Time.time;
+        }
     }
 
     public void SlamDown()
     {
-        movingTetromino.SlamDown();
+        if (movingTetromino != null)
+        {
+            movingTetromino.SlamDown();
+        }
     }
 
     public void RotateCCW()
     {
-        movingTetromino.RotateCCW();
+        if (movingTetromino != null)
+        {
+            movingTetromino.RotateCCW();
+        }
     }
 
     public void RotateCW()
     {
-        movingTetromino.RotateCW();
+        if (movingTetromino != null)
+        {
+            movingTetromino.RotateCW();
+        }
     }
-    
+
+    public void Damage()
+    {
+        if (movingTetromino != null)
+        {
+            MoveDown();
+            MoveUpAllLines();
+            movingTetromino.transform.position += new Vector3(0, 1, 0);
+            AddBottomLine();
+        }
+    }
+
+    private void AddBottomLine()
+    {
+        int randomX = Random.Range(0, boardWidth);
+        for (int x = 0; x < boardWidth; x++)
+        {
+            if (x != randomX)
+            {
+                GameObject block = Instantiate(blockPrefab, transform.position + new Vector3(x, 0, 0), Quaternion.identity);
+                grid[x, 0] = block.transform;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -124,25 +168,29 @@ public class TetrisController : MonoBehaviour
                 {
                     MoveLeft();
                 }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     MoveRight();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     MoveDown();
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     SlamDown();
                 }
-                else if (Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     RotateCCW();
                 }
-                else if (Input.GetKeyDown(KeyCode.X))
+                if (Input.GetKeyDown(KeyCode.X))
                 {
                     RotateCW();
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Damage();
                 }
             }
 
@@ -219,6 +267,34 @@ public class TetrisController : MonoBehaviour
                     grid[x, y - 1] = grid[x, y];
                     grid[x, y] = null;
                     grid[x, y - 1].transform.position -= new Vector3(0,1,0);
+                }
+            }
+        }
+    }
+    
+    private void MoveUpAllLines()
+    {
+        {
+            int y = boardHeight - 1;
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    Destroy(grid[x,y].gameObject);
+                    grid[x, y] = null;
+                }
+            }
+        }
+        
+        for (int y = boardHeight - 2; y >= 0; y--)
+        {
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    grid[x, y + 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y + 1].transform.position += new Vector3(0,1,0);
                 }
             }
         }
