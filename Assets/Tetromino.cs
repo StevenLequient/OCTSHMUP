@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
-    public bool stopped = false;
+    public bool frozen = false;
+    public Vector3 rotationPivot;
 
     private Transform tetrisBoard;
     // Start is called before the first frame update
@@ -42,19 +43,19 @@ public class Tetromino : MonoBehaviour
 
     public void RotateCCW()
     {
-        transform.RotateAround(transform.position, new Vector3(0,0,1), 90);
+        transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), 90);
         if (!ValidMove())
         {
-            transform.RotateAround(transform.position, new Vector3(0,0,1), -90);
+            transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), -90);
         }
     }
 
     public void RotateCW()
     {
-        transform.RotateAround(transform.position, new Vector3(0,0,1), -90);
+        transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), -90);
         if (!ValidMove())
         {
-            transform.RotateAround(transform.position, new Vector3(0,0,1), 90);
+            transform.RotateAround(transform.TransformPoint(rotationPivot), new Vector3(0,0,1), 90);
         }
     }
 
@@ -65,7 +66,7 @@ public class Tetromino : MonoBehaviour
         if (!ValidMove())
         {
             transform.position -= move;
-            stopped = true;
+            frozen = true;
         }
     }
 
@@ -84,5 +85,13 @@ public class Tetromino : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SlamDown()
+    {
+        while (!frozen)
+        {
+            MoveDown();
+        }
     }
 }
