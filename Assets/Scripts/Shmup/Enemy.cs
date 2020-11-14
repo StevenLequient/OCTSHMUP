@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public TetrisAction action;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Action;
 
     // Update is called once per frame
     void Update()
@@ -23,9 +17,13 @@ public class Enemy : MonoBehaviour
 
     public void Hit()
     {
-        if (action != null)
+        if (Action != null)
         {
-            action.Trigger();
+            TetrisAction tetrisAction = Action.GetComponent<TetrisAction>();
+            if (tetrisAction != null)
+            {
+                tetrisAction.Trigger();
+            }
         }
         Destroy(gameObject);
     }

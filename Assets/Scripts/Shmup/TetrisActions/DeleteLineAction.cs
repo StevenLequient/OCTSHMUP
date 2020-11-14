@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeleteLineAction : TetrisAction
 {
     public int DeleteAmount;
-    public new void Trigger()
+    public override void Trigger()
     {
         
     }

@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetrisAction : MonoBehaviour
+public abstract class TetrisAction : MonoBehaviour
 {
-    public void Trigger()
-    {
+    public abstract void Trigger();
 
+    protected void SetSprite(Sprite sprite)
+    {
+        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = sprite;
+        }
     }
 }

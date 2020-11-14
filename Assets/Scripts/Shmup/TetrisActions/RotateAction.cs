@@ -13,7 +13,7 @@ public class RotateAction : TetrisAction
     public int RotateAmount;
 
     public RotateDirection Direction;
-    public new void Trigger()
+    public override void Trigger()
     {
         switch (Direction)
         {

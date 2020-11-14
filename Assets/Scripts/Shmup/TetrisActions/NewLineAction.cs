@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewLineAction : TetrisAction
 {
     public int NewAmount;
-    public new void Trigger()
+    public override void Trigger()
     {
         
     }

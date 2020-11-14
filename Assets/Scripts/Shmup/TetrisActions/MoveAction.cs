@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 
 public class MoveAction : TetrisAction
@@ -13,12 +14,43 @@ public class MoveAction : TetrisAction
         Right
     }
 
-    public MoveDirection Direction;
+    private MoveDirection direction;
+    public MoveDirection Direction
+    {
+        get => direction;
+        set
+        {
+            switch (value)
+            {
+                case MoveDirection.Up:
+                    SetSprite(ShmupController.Instance.SpriteUpArrow);
+                    break;
+                case MoveDirection.Down:
+                    SetSprite(ShmupController.Instance.SpriteDownArrow);
+                    break;
+                case MoveDirection.Left:
+                    SetSprite(ShmupController.Instance.SpriteLeftArrow);
+                    break;
+                case MoveDirection.Right:
+                    SetSprite(ShmupController.Instance.SpriteRightArrow);
+                    break;
+                default:
+                    break;
+            }
+
+            direction = value;
+        }
+    }
     public int MoveAmount;
 
-    public new void Trigger()
+    void Start()
     {
-        switch (Direction)
+        
+    }
+
+    public override void Trigger()
+    {
+        switch (direction)
         {
             case MoveDirection.Up:
                 break;

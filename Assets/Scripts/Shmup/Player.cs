@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
     public Rigidbody2D rb;
     public Camera cam;
-    public GameObject shmup;
 
     private Vector2 movement;
     //private Vector2 mousePos;
@@ -24,7 +21,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedUnscaledDeltaTime);
+        rb.MovePosition(rb.position + movement * ShmupController.Instance.PlayerSpeed * Time.fixedUnscaledDeltaTime);
 
         //Vector2 lookDir = mousePos - rb.position;
         //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
