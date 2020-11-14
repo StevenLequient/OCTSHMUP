@@ -9,10 +9,13 @@ public class Tetromino : MonoBehaviour
     public Vector3 rotationPivot;
 
     private Transform tetrisBoard;
+
+    private TetrisController tetrisController;
     // Start is called before the first frame update
     void Start()
     {
-        tetrisBoard = FindObjectOfType<TetrisController>().GetComponent<Transform>();
+        tetrisController = FindObjectOfType<TetrisController>();
+        tetrisBoard = tetrisController.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -79,6 +82,11 @@ public class Tetromino : MonoBehaviour
             int y = Mathf.RoundToInt(newPos.y);
 
             if (x < 0 || x >= 10 || y < 0)
+            {
+                return false;
+            }
+
+            if (tetrisController.grid[x, y] != null)
             {
                 return false;
             }

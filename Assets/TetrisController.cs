@@ -15,7 +15,7 @@ public class TetrisController : MonoBehaviour
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
 
-    private Transform[,] grid;
+    public Transform[,] grid = new Transform[10,30];
 
 
     void SpawnPiece()
@@ -33,45 +33,57 @@ public class TetrisController : MonoBehaviour
     {
         if (movingTetromino != null)
         {
-            var tetromino = movingTetromino.GetComponent<Tetromino>();
             if (directControl)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    tetromino.MoveLeft();
+                    movingTetromino.MoveLeft();
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    tetromino.MoveRight();
+                    movingTetromino.MoveRight();
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    tetromino.MoveDown();
+                    movingTetromino.MoveDown();
+                    previousFallTime = Time.time;
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    tetromino.SlamDown();
+                    movingTetromino.SlamDown();
                 }
                 else if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    tetromino.RotateCCW();
+                    movingTetromino.RotateCCW();
                 }
                 else if (Input.GetKeyDown(KeyCode.X))
                 {
-                    tetromino.RotateCW();
+                    movingTetromino.RotateCW();
                 }
             }
 
             if (Time.time - previousFallTime > fallTimeInterval)
             {
-                tetromino.MoveDown();
+                movingTetromino.MoveDown();
                 previousFallTime = Time.time;
             }
 
-            if (tetromino.frozen)
+            if (movingTetromino.frozen)
             {
+                AddToGrid();
                 SpawnPiece();
             }
+        }
+    }
+
+    private void AddToGrid()
+    {
+        foreach (Transform children in movingTetromino.transform)
+        {
+            var newPos = transform.InverseTransformPoint(children.position);
+            int x = Mathf.RoundToInt(newPos.x);
+            int y = Mathf.RoundToInt(newPos.y);
+            grid[x, y] = children;
         }
     }
 }
