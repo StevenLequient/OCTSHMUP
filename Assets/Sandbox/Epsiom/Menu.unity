@@ -219,11 +219,12 @@ MonoBehaviour:
 
     Name2
 
-    Name3
+    Steven Lequient
 
-    Name4
+    Erica Porter
 
-    Name5'
+    Nicholas
+    Vallejos'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53803afb03705114db980c882f391fce, type: 2}
   m_sharedMaterial: {fileID: 7576123092963815549, guid: 53803afb03705114db980c882f391fce,
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 33
+  m_firstOverflowCharacterIndex: 50
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -294,10 +295,10 @@ MonoBehaviour:
   m_margin: {x: 16, y: 0, z: 0, w: 16}
   m_textInfo:
     textComponent: {fileID: 125549079}
-    characterCount: 38
+    characterCount: 67
     spriteCount: 0
-    spaceCount: 6
-    wordCount: 7
+    spaceCount: 9
+    wordCount: 10
     linkCount: 0
     lineCount: 6
     pageCount: 1
