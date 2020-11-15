@@ -34,11 +34,11 @@ public class EnemyPrinter : MonoBehaviour
                 MoveAction action = actionObject.AddComponent<MoveAction>();
                 action.MoveAmount = 1;
                 float directionRand = Random.Range(0, 100);
-                if (directionRand <= 45f)
+                if (directionRand <= 40f)
                 {
                     action.Direction = MoveAction.MoveDirection.Left;
                 }
-                else if (directionRand <= 90f)
+                else if (directionRand <= 80f)
                 {
                     action.Direction = MoveAction.MoveDirection.Right;
                 }
