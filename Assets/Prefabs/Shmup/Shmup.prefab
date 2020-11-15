@@ -50,13 +50,17 @@ MonoBehaviour:
   Width: 10
   Height: 20
   PlayerSpeed: 7
-  SpriteLeftArrow: {fileID: 21300000, guid: a0b22e6674f4aad438f40be0b7eb897f, type: 3}
-  SpriteRightArrow: {fileID: 21300000, guid: 23daa4bb660a86e48bcac4112ecbae7e, type: 3}
-  SpriteUpArrow: {fileID: 21300000, guid: 088c776f548f13b4183feab1cb897074, type: 3}
-  SpriteDownArrow: {fileID: 21300000, guid: 24157d48f9a65c8419e7a1ebd42bd051, type: 3}
-  SpriteRotateClockwise: {fileID: 21300000, guid: 9cbdb23b8be623e4094c9d95f8d7ec1e,
+  SpriteLeftArrow: {fileID: -5402412272178277761, guid: 9831585cbe454814b8a054b2982d69f5,
     type: 3}
-  SpriteRotateCounterClockwise: {fileID: 21300000, guid: 8ac65c644b8b85a4a99a469ca56c0d83,
+  SpriteRightArrow: {fileID: 8894201953851282084, guid: 9831585cbe454814b8a054b2982d69f5,
+    type: 3}
+  SpriteUpArrow: {fileID: 2013261503205373015, guid: 9831585cbe454814b8a054b2982d69f5,
+    type: 3}
+  SpriteDownArrow: {fileID: 7664807735657788756, guid: 9831585cbe454814b8a054b2982d69f5,
+    type: 3}
+  SpriteRotateClockwise: {fileID: -7811504096720598664, guid: 9831585cbe454814b8a054b2982d69f5,
+    type: 3}
+  SpriteRotateCounterClockwise: {fileID: 3760674464881954987, guid: 9831585cbe454814b8a054b2982d69f5,
     type: 3}
   SpriteNewLine: {fileID: 21300000, guid: 6adb6225e3a19b3439082cdd43aec7de, type: 3}
 --- !u!1001 &3027167896826465498
