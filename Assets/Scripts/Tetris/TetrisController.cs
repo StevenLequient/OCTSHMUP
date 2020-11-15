@@ -55,6 +55,21 @@ public class TetrisController : MonoBehaviour
     {
         grid = new Transform[boardWidth,boardHeight];
         SpawnPiece();
+        StartMusic();
+    }
+
+    void StartMusic()
+    {
+        AudioManager.instance.Mute("Music", false);
+        AudioManager.instance.Mute("Tense", true);
+        AudioManager.instance.PlayIfNotAlreadyPlaying("Music");
+        AudioManager.instance.PlayIfNotAlreadyPlaying("Tense");
+    }
+
+    void SetTenseMusic(bool tense)
+    {
+        AudioManager.instance.Mute("Music", tense);
+        AudioManager.instance.Mute("Tense", !tense);
     }
     
     void SpawnPiece()
@@ -262,6 +277,25 @@ public class TetrisController : MonoBehaviour
                 SpawnPiece();
             }
         }
+
+        bool tense = BlocksHeight() >= 12;
+        SetTenseMusic(tense);
+    }
+
+    public int BlocksHeight()
+    {
+        for (int y = boardHeight - 1; y >= 0; y--)
+        {
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    return y;
+                }
+            }
+        }
+
+        return 0;
     }
 
     private int ClearLines()
