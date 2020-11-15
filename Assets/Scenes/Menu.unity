@@ -215,9 +215,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Made by:
 
-    Name1
+    Lysco
 
-    Name2
+    Percee
 
     Steven Lequient
 
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 19.1
+  m_fontSizeBase: 19.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 50
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_margin: {x: 16, y: 0, z: 0, w: 16}
   m_textInfo:
     textComponent: {fileID: 125549079}
-    characterCount: 67
+    characterCount: 68
     spriteCount: 0
     spaceCount: 9
     wordCount: 10
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title of game
+  m_text: OCTSHMUP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44025a73288a071449ea74d99eee4331, type: 2}
   m_sharedMaterial: {fileID: -6353040079965900098, guid: 44025a73288a071449ea74d99eee4331,
@@ -412,8 +412,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 84
-  m_fontSizeBase: 84
+  m_fontSize: 55.44
+  m_fontSizeBase: 55.44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -453,10 +453,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 382233527}
-    characterCount: 13
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -521,7 +521,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000011444, y: 0.51109}
-  m_SizeDelta: {x: 290.7117, y: 80.863434}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &434892095
 MonoBehaviour:
@@ -891,8 +891,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1092,7 +1092,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -183.07, y: 27.699997}
-  m_SizeDelta: {x: 331.0385, y: 39.07094}
+  m_SizeDelta: {x: 331.0385, y: 21.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281039854
 MonoBehaviour:
