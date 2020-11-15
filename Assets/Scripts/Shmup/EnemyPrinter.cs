@@ -18,37 +18,13 @@ public class EnemyPrinter : MonoBehaviour
 
     private float nextSpawnTime;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        float x = moveSpeed;
-        if (goingLeft)
-        {
-            x = -x;
-        }
-
-        movement.x = x;
-        movement.y = 0;
-    }
-
     void FixedUpdate()
     {
-        rb.velocity = movement;
-
-        if (transform.localPosition.x < 0.5f)
-        {
-            goingLeft = false;
-        }
-
-        if (transform.localPosition.x > 6.5f)
-        {
-            goingLeft = true;
-        }
-
+        ShmupController shmup = ShmupController.Instance;
+        float spawnX = Random.Range(shmup.VerticalMarginSize, shmup.Width - shmup.VerticalMarginSize);
         if (Time.fixedTime > nextSpawnTime)
         {
-            GameObject enemy = Instantiate(baseEnemyPrefab, transform.position, transform.rotation);
+            GameObject enemy = Instantiate(baseEnemyPrefab, shmup.transform.position + new Vector3(spawnX, shmup.Height, 0), transform.rotation);
             enemy.transform.SetParent(ShmupController.Instance.transform);
             GameObject actionObject = enemy.transform.GetChild(0).gameObject;
 
@@ -93,7 +69,6 @@ public class EnemyPrinter : MonoBehaviour
             rb.velocity = -transform.up * shootingForce;
 
             nextSpawnTime = Time.fixedTime + Random.Range(minSpawnInterval, maxSpawnInterval);
-            //rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         }
     }
 }

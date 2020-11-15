@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.y > 9.8f)
+        if (transform.localPosition.y > ShmupController.Instance.Height + 1f)
         {
             Destroy(gameObject);
         }
