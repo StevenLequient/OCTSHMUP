@@ -20,7 +20,8 @@ public class TetrisController : MonoBehaviour
     public bool directControl;
     private Tetromino movingTetromino;
     
-    public float fallTimeInterval = 0.8f;
+    public float levelOneFallTimeInterval = 1.5f;
+    public float levelMaxFallTimeInterval = 0.1f;
     private float previousFallTime;
 
     public Vector3 spawnPoint;
@@ -35,13 +36,22 @@ public class TetrisController : MonoBehaviour
     public Transform[,] grid;
 
     public bool dead = false;
-    public int clearedLines = 0;
 
     public GameObject lineClearEffectPrefab;
     public float lineClearEffectDuration = 0.5f;
     private List<int> linesToClear = new List<int>();
     private List<GameObject> lineClearEffects = new List<GameObject>();
     private float lineTime;
+
+    public int clearedLines = 0;
+    public int score = 0;
+    public int level = 1;
+
+    public int maxSpeedLevel = 10;
+    public int linesPerLevel = 3;
+
+    public AudioSource sfxLineClear;
+    public AudioSource sfxFallingBlock;
 
     // Start is called before the first frame update
     void Start()
@@ -194,7 +204,8 @@ public class TetrisController : MonoBehaviour
                 }
             }
 
-            if (Time.time - previousFallTime > fallTimeInterval)
+            float realFallTimeInteval = Mathf.Lerp(levelOneFallTimeInterval, levelMaxFallTimeInterval, (float)(level - 1) / maxSpeedLevel);
+            if (Time.time - previousFallTime > realFallTimeInteval)
             {
                 movingTetromino.MoveDown();
                 previousFallTime = Time.time;
@@ -202,6 +213,7 @@ public class TetrisController : MonoBehaviour
 
             if (movingTetromino.frozen)
             {
+                AudioManager.instance.Play("TetrisBlock");
                 AddToGrid();
                 movingTetromino = null;
                 int linesCleared = ClearLines();
@@ -209,8 +221,28 @@ public class TetrisController : MonoBehaviour
                 {
                     SpawnPiece();
                 }
-
-                clearedLines += linesCleared;
+                else
+                {
+                    if(linesCleared == 1)
+                    {
+                        score += 100 * level;
+                    }
+                    else if(linesCleared == 2)
+                    {
+                        score += 300 * level;
+                    }
+                    else if(linesCleared == 3)
+                    {
+                        score += 500 * level;
+                    }
+                    else if(linesCleared == 4)
+                    {
+                        score += 800 * level;
+                    }
+                    clearedLines += linesCleared;
+                    level = (clearedLines / linesPerLevel) + 1;
+                    AudioManager.instance.Play("RowComplete");
+                }
             }
         }
 
@@ -253,6 +285,7 @@ public class TetrisController : MonoBehaviour
         {
             lineTime = Time.time;
         }
+        
         return cleared_lines;
     }
 
