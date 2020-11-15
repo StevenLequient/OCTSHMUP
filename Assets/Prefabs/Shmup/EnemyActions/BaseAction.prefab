@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366414267252345454}
   - component: {fileID: 3522876987298760244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7656119723220953507}
   - component: {fileID: 7656119723220953506}
   - component: {fileID: 8716937036041139571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BaseAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,3 +216,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Action: {fileID: 6469362808952862266}
+  InvincibleSpawnTime: 0.1

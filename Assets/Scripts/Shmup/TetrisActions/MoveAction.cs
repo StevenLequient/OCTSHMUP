@@ -55,7 +55,7 @@ public class MoveAction : TetrisAction
             case MoveDirection.Up:
                 break;
             case MoveDirection.Down:
-                TetrisController.Instance.MoveDown();
+                TetrisController.Instance.SlamDown();
                 break;
             case MoveDirection.Left:
                 TetrisController.Instance.MoveLeft();

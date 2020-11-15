@@ -11,7 +11,7 @@ public class ShmupController : MonoBehaviour
     public float VerticalMarginSize = 1f;
     public float Width = 7.25f;
     public float Height = 9.5f; 
-    public float PlayerSpeed = 3f;
+    public float PlayerSpeed = 15f;
     public Sprite SpriteLeftArrow;
     public Sprite SpriteRightArrow;
     public Sprite SpriteUpArrow;

@@ -1157,7 +1157,7 @@ MonoBehaviour:
   VerticalMarginSize: 1
   Width: 7.25
   Height: 15
-  PlayerSpeed: 3
+  PlayerSpeed: 7
   SpriteLeftArrow: {fileID: 21300000, guid: a0b22e6674f4aad438f40be0b7eb897f, type: 3}
   SpriteRightArrow: {fileID: 21300000, guid: 23daa4bb660a86e48bcac4112ecbae7e, type: 3}
   SpriteUpArrow: {fileID: 21300000, guid: 088c776f548f13b4183feab1cb897074, type: 3}
@@ -1367,7 +1367,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012417874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18, y: 11.41, z: 0}
+  m_LocalPosition: {x: 3.47, y: 9.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1558523681}

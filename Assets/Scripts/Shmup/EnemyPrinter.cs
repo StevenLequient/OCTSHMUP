@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class EnemyPrinter : MonoBehaviour
 {
-    public float moveSpeed = 2f;
-    public float minSpawnInterval = 0.2f;
-    public float maxSpawnInterval = 1.5f;
-    public float shootingForce = 4f;
+    public float minMoveSpeed = 0.5f;
+    public float maxMoveSpeed = 4f;
+    public float minSpawnInterval = 0.01f;
+    public float maxSpawnInterval = 0.02f;
 
     public Rigidbody2D rb;
     public GameObject baseEnemyPrefab;
@@ -18,36 +18,36 @@ public class EnemyPrinter : MonoBehaviour
 
     private float nextSpawnTime;
 
-    void FixedUpdate()
+    void Update()
     {
         ShmupController shmup = ShmupController.Instance;
         float spawnX = Random.Range(shmup.VerticalMarginSize, shmup.Width - shmup.VerticalMarginSize);
-        if (Time.fixedTime > nextSpawnTime)
+        if (Time.fixedTime >= nextSpawnTime)
         {
             GameObject enemy = Instantiate(baseEnemyPrefab, shmup.transform.position + new Vector3(spawnX, shmup.Height, 0), transform.rotation);
             enemy.transform.SetParent(ShmupController.Instance.transform);
             GameObject actionObject = enemy.transform.GetChild(0).gameObject;
 
             float rand = Random.Range(0, 100);
-            if (rand <= 60f)
+            if (rand <= 72f)
             {
                 MoveAction action = actionObject.AddComponent<MoveAction>();
                 action.MoveAmount = 1;
-
-                switch ((int)Random.Range(0, 2.99f))
+                float directionRand = Random.Range(0, 100);
+                if (directionRand <= 45f)
                 {
-                    case 0:
-                        action.Direction = MoveAction.MoveDirection.Down;
-                        break;
-                    case 1:
-                        action.Direction = MoveAction.MoveDirection.Left;
-                        break;
-                    default:
-                        action.Direction = MoveAction.MoveDirection.Right;
-                        break;
+                    action.Direction = MoveAction.MoveDirection.Left;
+                }
+                else if (directionRand <= 90f)
+                {
+                    action.Direction = MoveAction.MoveDirection.Right;
+                }
+                else
+                {
+                    action.Direction = MoveAction.MoveDirection.Down;
                 }
             }
-            else if (rand <= 95f)
+            else if (rand <= 96f)
             {
                 RotateAction action = actionObject.AddComponent<RotateAction>();
                 switch ((int)Random.Range(0, 1.99f))
@@ -66,7 +66,7 @@ public class EnemyPrinter : MonoBehaviour
             }
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            rb.velocity = -transform.up * shootingForce;
+            rb.velocity = -transform.up * Random.Range(minMoveSpeed, maxMoveSpeed);
 
             nextSpawnTime = Time.fixedTime + Random.Range(minSpawnInterval, maxSpawnInterval);
         }
