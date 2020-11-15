@@ -13969,6 +13969,16 @@ PrefabInstance:
       propertyPath: m_UpscaleRT
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 947778046860827336, guid: 23ad8e919996619459e217823e0a1833,
+        type: 3}
+      propertyPath: m_CropFrameX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 947778046860827336, guid: 23ad8e919996619459e217823e0a1833,
+        type: 3}
+      propertyPath: m_CropFrameY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 947778046860827338, guid: 23ad8e919996619459e217823e0a1833,
         type: 3}
       propertyPath: m_Name
