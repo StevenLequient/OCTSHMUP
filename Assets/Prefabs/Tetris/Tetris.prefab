@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f76cc4d8935cb34f93aacf18fc1c267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directControl: 1
+  directControl: 0
   fallTimeInterval: 0.8
   spawnPoint: {x: 5, y: 19, z: 0}
   piecesToSpawn:
@@ -136,10 +136,14 @@ MonoBehaviour:
   - {fileID: 7526784259021358994, guid: 3526c401e1a749144ba3af8fcb2020a1, type: 3}
   - {fileID: 5464402845014840248, guid: 5ddfb9be3fbca8148a51e9e560f69b5c, type: 3}
   - {fileID: 1204965749352307989, guid: 5994bdc0077fa6d4c8810568b820ce12, type: 3}
+  blockPrefab: {fileID: 7196571808669193148, guid: 7896f59098d49864e8369d240af4d048,
+    type: 3}
   boardWidth: 10
-  boardHeight: 20
+  boardHeight: 30
   dead: 0
-  clearedLines: 0
   lineClearEffectPrefab: {fileID: 724741396064115319, guid: 8017db4694394b640b4a97e9cc23d921,
     type: 3}
   lineClearEffectDuration: 0.5
+  clearedLines: 0
+  score: 0
+  level: 1

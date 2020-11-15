@@ -20,20 +20,22 @@ public class TetrisController : MonoBehaviour
     public bool directControl;
     private Tetromino movingTetromino;
     
-    public float fallTimeInterval = 0.8f;
+    public float levelOneFallTimeInterval = 1.5f;
+    public float levelMaxFallTimeInterval = 0.1f;
     private float previousFallTime;
 
     public Vector3 spawnPoint;
     public GameObject[] piecesToSpawn;
     private List<int> randomPieceBag = new List<int>();
+
+    public GameObject blockPrefab;
     
     public int boardWidth = 10;
-    public int boardHeight = 20;
+    public int boardHeight = 30;
 
     public Transform[,] grid;
 
     public bool dead = false;
-    public int clearedLines = 0;
 
     public GameObject lineClearEffectPrefab;
     public float lineClearEffectDuration = 0.5f;
@@ -41,10 +43,20 @@ public class TetrisController : MonoBehaviour
     private List<GameObject> lineClearEffects = new List<GameObject>();
     private float lineTime;
 
+    public int clearedLines = 0;
+    public int score = 0;
+    public int level = 1;
+
+    public int maxSpeedLevel = 10;
+    public int linesPerLevel = 3;
+
+    public AudioSource sfxLineClear;
+    public AudioSource sfxFallingBlock;
+
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Transform[boardWidth,boardHeight + 10];
+        grid = new Transform[boardWidth,boardHeight];
         SpawnPiece();
     }
     
@@ -84,35 +96,77 @@ public class TetrisController : MonoBehaviour
     
     public void MoveLeft()
     {
-        movingTetromino.MoveLeft();
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveLeft();
+        }
     }
 
     public void MoveRight()
     {
-        movingTetromino.MoveRight();
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveRight();
+        }
     }
 
     public void MoveDown()
     {
-        movingTetromino.MoveDown();
-        previousFallTime = Time.time;
+        if (movingTetromino != null)
+        {
+            movingTetromino.MoveDown();
+            previousFallTime = Time.time;
+        }
     }
 
     public void SlamDown()
     {
-        movingTetromino.SlamDown();
+        if (movingTetromino != null)
+        {
+            movingTetromino.SlamDown();
+        }
     }
 
     public void RotateCCW()
     {
-        movingTetromino.RotateCCW();
+        if (movingTetromino != null)
+        {
+            movingTetromino.RotateCCW();
+        }
     }
 
     public void RotateCW()
     {
-        movingTetromino.RotateCW();
+        if (movingTetromino != null)
+        {
+            movingTetromino.RotateCW();
+        }
     }
-    
+
+    public void Damage()
+    {
+        if (movingTetromino != null)
+        {
+            MoveDown();
+            MoveUpAllLines();
+            movingTetromino.transform.position += new Vector3(0, 1, 0);
+            AddBottomLine();
+        }
+    }
+
+    private void AddBottomLine()
+    {
+        int randomX = Random.Range(0, boardWidth);
+        for (int x = 0; x < boardWidth; x++)
+        {
+            if (x != randomX)
+            {
+                GameObject block = Instantiate(blockPrefab, transform.position + new Vector3(x, 0, 0), Quaternion.identity);
+                grid[x, 0] = block.transform;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -124,29 +178,34 @@ public class TetrisController : MonoBehaviour
                 {
                     MoveLeft();
                 }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     MoveRight();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     MoveDown();
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     SlamDown();
                 }
-                else if (Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     RotateCCW();
                 }
-                else if (Input.GetKeyDown(KeyCode.X))
+                if (Input.GetKeyDown(KeyCode.X))
                 {
                     RotateCW();
                 }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Damage();
+                }
             }
 
-            if (Time.time - previousFallTime > fallTimeInterval)
+            float realFallTimeInteval = Mathf.Lerp(levelOneFallTimeInterval, levelMaxFallTimeInterval, (float)(level - 1) / maxSpeedLevel);
+            if (Time.time - previousFallTime > realFallTimeInteval)
             {
                 movingTetromino.MoveDown();
                 previousFallTime = Time.time;
@@ -154,6 +213,7 @@ public class TetrisController : MonoBehaviour
 
             if (movingTetromino.frozen)
             {
+                AudioManager.instance.Play("TetrisBlock");
                 AddToGrid();
                 movingTetromino = null;
                 int linesCleared = ClearLines();
@@ -161,8 +221,28 @@ public class TetrisController : MonoBehaviour
                 {
                     SpawnPiece();
                 }
-
-                clearedLines += linesCleared;
+                else
+                {
+                    if(linesCleared == 1)
+                    {
+                        score += 100 * level;
+                    }
+                    else if(linesCleared == 2)
+                    {
+                        score += 300 * level;
+                    }
+                    else if(linesCleared == 3)
+                    {
+                        score += 500 * level;
+                    }
+                    else if(linesCleared == 4)
+                    {
+                        score += 800 * level;
+                    }
+                    clearedLines += linesCleared;
+                    level = (clearedLines / linesPerLevel) + 1;
+                    AudioManager.instance.Play("RowComplete");
+                }
             }
         }
 
@@ -205,6 +285,7 @@ public class TetrisController : MonoBehaviour
         {
             lineTime = Time.time;
         }
+        
         return cleared_lines;
     }
 
@@ -219,6 +300,34 @@ public class TetrisController : MonoBehaviour
                     grid[x, y - 1] = grid[x, y];
                     grid[x, y] = null;
                     grid[x, y - 1].transform.position -= new Vector3(0,1,0);
+                }
+            }
+        }
+    }
+    
+    private void MoveUpAllLines()
+    {
+        {
+            int y = boardHeight - 1;
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    Destroy(grid[x,y].gameObject);
+                    grid[x, y] = null;
+                }
+            }
+        }
+        
+        for (int y = boardHeight - 2; y >= 0; y--)
+        {
+            for (int x = 0; x < boardWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    grid[x, y + 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y + 1].transform.position += new Vector3(0,1,0);
                 }
             }
         }
