@@ -29,7 +29,7 @@ public class EnemyPrinter : MonoBehaviour
             GameObject actionObject = enemy.transform.GetChild(0).gameObject;
 
             float rand = Random.Range(0, 100);
-            if (rand <= 72f)
+            if (rand <= 75f)
             {
                 MoveAction action = actionObject.AddComponent<MoveAction>();
                 action.MoveAmount = 1;
@@ -47,7 +47,7 @@ public class EnemyPrinter : MonoBehaviour
                     action.Direction = MoveAction.MoveDirection.Down;
                 }
             }
-            else if (rand <= 96f)
+            else
             {
                 RotateAction action = actionObject.AddComponent<RotateAction>();
                 switch ((int)Random.Range(0, 1.99f))
@@ -59,10 +59,6 @@ public class EnemyPrinter : MonoBehaviour
                         action.Direction = RotateAction.RotateDirection.CounterClockwise;
                         break;
                 }
-            }
-            else
-            {
-                NewLineAction action = actionObject.AddComponent<NewLineAction>();
             }
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();

@@ -50,9 +50,6 @@ public class TetrisController : MonoBehaviour
     public int maxSpeedLevel = 10;
     public int linesPerLevel = 3;
 
-    public AudioSource sfxLineClear;
-    public AudioSource sfxFallingBlock;
-
     // Start is called before the first frame update
     void Start()
     {

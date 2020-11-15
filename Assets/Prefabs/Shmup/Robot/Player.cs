@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
     void ShootLeftWeapon()
     {
+        AudioManager.instance.Play("GunShot");
         GameObject bullet = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
         bullet.transform.SetParent(ShmupController.Instance.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
 
     void ShootRightWeapon()
     {
+        AudioManager.instance.Play("GunShot");
         GameObject bullet = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
         bullet.transform.SetParent(ShmupController.Instance.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
