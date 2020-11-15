@@ -12,14 +12,36 @@ public class RotateAction : TetrisAction
 
     public int RotateAmount;
 
-    public RotateDirection Direction;
+    private RotateDirection direction;
+    public RotateDirection Direction
+    {
+        get => direction;
+        set
+        {
+            switch (value)
+            {
+                case RotateDirection.Clockwise:
+                    SetSprite(ShmupController.Instance.SpriteRotateClockwise);
+                    break;
+                case RotateDirection.CounterClockwise:
+                    SetSprite(ShmupController.Instance.SpriteRotateCounterClockwise);
+                    break;
+                default:
+                    break;
+            }
+
+            direction = value;
+        }
+    }
     public override void Trigger()
     {
         switch (Direction)
         {
             case RotateDirection.Clockwise:
+                TetrisController.Instance.RotateCW();
                 break;
             case RotateDirection.CounterClockwise:
+                TetrisController.Instance.RotateCCW();
                 break;
             default:
                 break;

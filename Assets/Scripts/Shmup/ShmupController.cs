@@ -12,6 +12,9 @@ public class ShmupController : MonoBehaviour
     public Sprite SpriteRightArrow;
     public Sprite SpriteUpArrow;
     public Sprite SpriteDownArrow;
+    public Sprite SpriteRotateClockwise;
+    public Sprite SpriteRotateCounterClockwise;
+    public Sprite SpriteNewLine;
 
     // Start is called before the first frame update
     void Awake()

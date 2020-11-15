@@ -52,25 +52,41 @@ public class EnemyPrinter : MonoBehaviour
             enemy.transform.SetParent(ShmupController.Instance.transform);
             GameObject actionObject = enemy.transform.GetChild(0).gameObject;
 
-            switch ((int)Random.Range(0, 0.9f))
+            float rand = Random.Range(0, 100);
+            if (rand <= 60f)
             {
-                default:
-                    MoveAction action = actionObject.AddComponent<MoveAction>();
-                    action.MoveAmount = 1;
-                    MoveAction.MoveDirection direction;
-                    switch ((int) Random.Range(0, 2.9f))
-                    {
-                        case 0:
-                            action.Direction = MoveAction.MoveDirection.Down;
-                            break;
-                        case 1:
-                            action.Direction = MoveAction.MoveDirection.Left;
-                            break;
-                        default:
-                            action.Direction = MoveAction.MoveDirection.Right;
-                            break;
-                    }
-                    break;
+                MoveAction action = actionObject.AddComponent<MoveAction>();
+                action.MoveAmount = 1;
+
+                switch ((int)Random.Range(0, 2.99f))
+                {
+                    case 0:
+                        action.Direction = MoveAction.MoveDirection.Down;
+                        break;
+                    case 1:
+                        action.Direction = MoveAction.MoveDirection.Left;
+                        break;
+                    default:
+                        action.Direction = MoveAction.MoveDirection.Right;
+                        break;
+                }
+            }
+            else if (rand <= 95f)
+            {
+                RotateAction action = actionObject.AddComponent<RotateAction>();
+                switch ((int)Random.Range(0, 1.99f))
+                {
+                    case 0:
+                        action.Direction = RotateAction.RotateDirection.Clockwise;
+                        break;
+                    default:
+                        action.Direction = RotateAction.RotateDirection.CounterClockwise;
+                        break;
+                }
+            }
+            else
+            {
+                NewLineAction action = actionObject.AddComponent<NewLineAction>();
             }
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
