@@ -12720,6 +12720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuController
       objectReference: {fileID: 0}
+    - target: {fileID: 2862304242116361065, guid: 00228dd3441482946a0108964990f401,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2862304242116361071, guid: 00228dd3441482946a0108964990f401,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12959,6 +12964,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 379887043}
     m_Modifications:
+    - target: {fileID: 4037258585448946728, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037258585666519024, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4037258586322065596, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
         type: 3}
       propertyPath: m_Name
@@ -13029,6 +13044,11 @@ PrefabInstance:
       propertyPath: Height
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4037258586650954936, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4037258586672824503, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
         type: 3}
       propertyPath: m_Color.r
@@ -13058,6 +13078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxSpawnInterval
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037258587075858952, guid: 4d6fbf7ba8e6fc240ab016e249e4698c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d6fbf7ba8e6fc240ab016e249e4698c, type: 3}
