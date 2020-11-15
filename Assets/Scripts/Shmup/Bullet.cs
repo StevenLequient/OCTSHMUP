@@ -17,22 +17,21 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log("Enter");
-        if (hitInfo.GetComponent<Player>() != null)
+        if (hitInfo.GetComponent<Player>() != null || hitInfo.GetComponent<Bullet>() != null)
         {
             return;
         }
-        Enemy enemyComponent = hitInfo.GetComponent<Enemy>();
-        if (enemyComponent != null)
-        {
-            Debug.Log("enemy");
-            enemyComponent.Hit();
-        }
 
-        if (impactEffect != null)
+        Enemy enemy = hitInfo.GetComponent<Enemy>();
+        if (enemy != null)
         {
-            Instantiate(impactEffect, transform.position, transform.rotation);
+            if (impactEffect != null)
+            {
+                Instantiate(impactEffect, transform.position, transform.rotation);
+            }
+
+            enemy.Hit();
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

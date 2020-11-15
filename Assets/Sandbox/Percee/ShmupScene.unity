@@ -645,6 +645,86 @@ MonoBehaviour:
   clearedLines: 0
   lineClearEffectPrefab: {fileID: 0}
   lineClearEffectDuration: 0.5
+--- !u!1001 &1044472583
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1558523681}
+    m_Modifications:
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6313972
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.607593
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493556071627478042, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_Name
+      value: Robot_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632600656191410148, guid: ea26e844f04ea2541af57d3d3868fc5f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea26e844f04ea2541af57d3d3868fc5f, type: 3}
+--- !u!4 &1044472584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1493556071627478040, guid: ea26e844f04ea2541af57d3d3868fc5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1044472583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1060478875
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +836,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1101567621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1493556071627478042, guid: ea26e844f04ea2541af57d3d3868fc5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1044472583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1101567626
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101567621}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.006108612, y: -0.61698794}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8882003, y: 1.7660241}
+  m_EdgeRadius: 0
 --- !u!4 &1122464520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1841757513054765763, guid: 8a7a46eecb105a649b0631cd49ad0304,
@@ -1220,6 +1332,7 @@ Transform:
   - {fileID: 272552075}
   - {fileID: 1241380650}
   - {fileID: 2012417875}
+  - {fileID: 1044472584}
   m_Father: {fileID: 2052218368}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

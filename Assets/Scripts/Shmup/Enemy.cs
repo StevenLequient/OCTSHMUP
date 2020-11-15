@@ -29,11 +29,8 @@ public class Enemy : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
-        Debug.Log("Hit Enemy");
-        Player playerComponent = hitInfo.collider.GetComponent<Player>();
-        if (playerComponent != null)
+        if (hitInfo.collider.GetComponent<Player>() != null)
         {
-            playerComponent.Hit();
             Destroy(gameObject);
         }
     }
